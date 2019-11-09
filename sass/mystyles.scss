@@ -7,6 +7,7 @@
 // Set your brand colors
 $mostard: #E1AD01;
 $lavanda: #C8ADDB;
+$greenish: #74A88A;
 $pink: #FA7C91;
 $brown: #757763;
 $beige-light: #D0D1CD;
@@ -18,7 +19,8 @@ $family-sans-serif: "Nunito", sans-serif;
 $grey-dark: $brown;
 $grey-light: $gray-light;
 $primary: $lavanda;
-$link: $pink;
+$success:$greenish; 
+$link: $brown;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
@@ -41,13 +43,80 @@ $input-shadow: none;
 @import "../bulma/sass/layout/hero.sass";
 @import "../bulma/sass/layout/section.sass";
 
-.wrapper {
+.layout {
+    display:grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 15vh auto 10vh;
+
+    max-width: 1500px;
+    margin: 1vh auto;
+    height: 95vh;
+
+    .header {
+        display:flex ;
+        grid-column: 2 / -1;
+        grid-row: 1 / 2;
+        .icon {
+            margin-left: auto;
+            margin-right: 30%;
+            padding: 0.9rem;
+            color: $lavanda;
+        }
+        .nav {
+            height: 100%;
+            display: flex;
+            align-items: end;
+
+            .navbar {
+                display: flex;
+                flex-flow: row wrap;
+                align-content: center;
+
+                .navbar__item {
+                    padding: 0.4rem;
+                }
+            }
+        }
+
+    }
+
+    .aside {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        margin-right: 10px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .vertical {
+            writing-mode: vertical-lr;
+            transform: rotate(180deg);
+        }
+    }
+
+    .main {
+        grid-column: 2 / -1;
+        grid-row: 2 / 3;
+    }
+
+    .footer {
+        grid-column: 2 / -1;
+        grid-row: 3 / 4;
+    }
+}
+
+
+
+
+.gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 200px;
     grid-gap: 10px;
 
     .image {
-//        overflow:hidden;
+        //overflow:hidden;
 
         &:hover {
 
@@ -55,11 +124,22 @@ $input-shadow: none;
                 transform: scale(1.1);
             }
 
+        }
+
         img {
             transition: transform .5s ease;
-            }
+            width: 100%;
+            object-fit: cover;
+            object-position: center center;
+            max-height: 100%;
         }
+        
     }
+}
+
+/*
+.aside {
+    
 }
 
 .header {
@@ -84,13 +164,13 @@ $input-shadow: none;
         }
     }
 }
-
+*/
 .brand .title:hover {
     color: $lavanda !important;
 
 }
 
-[class*="navbar__item"]:hover{
-    color: $lavanda;
+[class*="navbar__item"]:hover a{
+    color: $lavanda !important;
 }
 
